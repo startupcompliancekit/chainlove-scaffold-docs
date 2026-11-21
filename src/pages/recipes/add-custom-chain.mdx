@@ -51,6 +51,22 @@ export const base = defineChain({
 
 In this file, we're defining the Base chain. We're using the `defineChain` function from viem to define the chain. You can add as many chains as you want to the `customChains.ts` file.
 
+### Choose the Base mainnet RPC endpoint
+
+The `rpcUrls.default.http` value above is an endpoint for Base mainnet.
+[Chain.Love](https://chain.love) provides a directory of Base API providers
+that can help you find alternatives for this chain definition. Before
+replacing the URL, check the provider's plan for the request volume your
+frontend generates, including polling and contract reads.
+
+Keep the chain ID `8453` when using Base mainnet. Check that the selected
+endpoint returns `0x2105` from `eth_chainId`; a Base Sepolia endpoint belongs
+to a different chain and must not be paired with this definition. Replacing
+an RPC URL does not change the chain ID or deploy contracts to that chain.
+
+This definition configures the frontend. Configure the corresponding
+Hardhat or Foundry deployment endpoint separately, as described above.
+
 ### Step 2: Update `scaffold.config.ts`
 
 Next, update your `scaffold.config.ts` file to include the new chain:
